@@ -40,7 +40,7 @@ export default function PublicSection() {
         <CardHeader>
           <CardTitle>Public Section</CardTitle>
           <CardDescription>
-            This section is visible to all visitors, login to access the protected section.
+            This section is visible to all visitors, please login to access the protected section.
           </CardDescription>
         </CardHeader>
         <CardContent>

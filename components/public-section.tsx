@@ -40,8 +40,8 @@ export default function PublicSection() {
         <CardHeader>
           <CardTitle>Public Section</CardTitle>
           <CardDescription>
-            This section is visible to all visitors, kindly login to access the protected section.
-          </CardDescription>
+            This section is visible to all visitors, please login to access the protected section.
+          <CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -76,7 +76,7 @@ export default function PublicSection() {
         </CardContent>
         <CardFooter>
           <Button onClick={handleSubmit} disabled={loading} className="w-full">
-            {loading ? "Logging in..." : "Login"}
+            {loading ? "Logg in in..." : "Login"}
           </Button>
         </CardFooter>
       </Card>

@@ -40,8 +40,8 @@ export default function PublicSection() {
         <CardHeader>
           <CardTitle>Public Section</CardTitle>
           <CardDescription>
-            This section is visible to all visitors, please login to access the protected section.
-          </CardDescription>
+            This section is visible to all visitors, request you to login to access the protected section.
+          <CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">

@@ -38,9 +38,9 @@ export default function PublicSection() {
     <div className="space-y-8">
       <Card className="w-full max-w-md mx-auto">
         <CardHeader>
-          <CardTitle>Public Section</CardTitle>
+          <CardTitle>Welcome to Our Platform</CardTitle>
           <CardDescription>
-            This section is visible to all visitors, please login to access the protected section.
+            Welcome! Please sign in to your account to access exclusive content and features.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -76,14 +76,14 @@ export default function PublicSection() {
         </CardContent>
         <CardFooter>
           <Button onClick={handleSubmit} disabled={loading} className="w-full">
-            {loading ? "Logg in in..." : "Login"}
+            {loading ? "Signing in..." : "Sign In"}
           </Button>
         </CardFooter>
       </Card>
 
       <div className="p-4 border rounded-lg">
-        <h2 className="text-lg font-medium mb-2">Test Credentials</h2>
-        <p className="text-sm text-muted-foreground mb-4">Use these credentials to test the authentication:</p>
+        <h2 className="text-lg font-medium mb-2">Demo Access</h2>
+        <p className="text-sm text-muted-foreground mb-4">For demonstration purposes, you can use these credentials to explore the protected features:</p>
         <div className="bg-muted p-3 rounded text-sm font-mono">
           <div>
             Username: <span className="font-bold">admin</span>

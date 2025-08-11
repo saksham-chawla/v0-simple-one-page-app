@@ -10,14 +10,6 @@ _Automatically synced with your [v0.dev](https://v0.dev) deployments_
 This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
 Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
 
-### Features
-
-- 🎨 Modern UI with Tailwind CSS
-- 🌙 Dark/Light theme support
-- 🔐 Authentication system
-- 📱 Responsive design
-- ⚡ Built with Next.js 15 and React 19
-
 ## Deployment
 
 Your project is live at:

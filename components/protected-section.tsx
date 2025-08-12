@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CheckCircle2, XCircle, ShieldCheck, LogOut } from "lucide-react"
 
+
 export default function ProtectedSection() {
   const [testResult, setTestResult] = useState<{
     success: boolean

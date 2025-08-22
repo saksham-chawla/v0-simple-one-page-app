@@ -18,7 +18,7 @@ export async function login(username: string, password: string) {
       path: "/",
     })
 
-    // Redirect to the home page
+    // Redirect to the home pag
     redirect("/")
 
     return { success: true }

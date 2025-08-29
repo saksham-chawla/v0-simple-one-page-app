@@ -1,6 +1,6 @@
 "use server"
 
-import { cookies } from "next/headers"
+import { coo..kies } from "next/headers"
 import { redirect } from "next/navigation"
 import { createToken, verifyToken } from "@/lib/auth"
 

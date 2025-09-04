@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { verifyToken } from "@/lib/auth"
-
+.
 export async function GET(request: NextRequest) {
   // Get the token from the Authorization header
   const authHeader = request.headers.get("Authorization")

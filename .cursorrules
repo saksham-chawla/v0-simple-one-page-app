@@ -1,0 +1,6 @@
+# Project-wide rules
+Use zap.Logger for all logging in Go code
+All database queries must filter by company_id
+Follow Go naming conventions: CamelCase for exported, camelCase for unexported
+Use context.Context for all function calls that might be cancelled
+Prefer interfaces for testability

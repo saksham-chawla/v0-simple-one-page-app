@@ -1,5 +1,5 @@
 "use server"
-.
+
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import { createToken, verifyToken } from "@/lib/auth"
@@ -64,4 +64,12 @@ export async function testAuthorization() {
       message: "Unauthorized: Invalid token",
     }
   }
+}
+
+export async function logout() {
+  // Delete the auth cookie
+  cookies().delete("auth-token")
+
+  // Redirect to the home page
+  redirect("/")
 }

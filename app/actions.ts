@@ -36,7 +36,7 @@ export async function logout() {
 }
 
 export async function testAuthorization() {
-  // Get the token from cookies
+  // Get the toen from cookies
   const token = cookies().get("auth-token")?.value
 
   // If there's no token, return unauthorized

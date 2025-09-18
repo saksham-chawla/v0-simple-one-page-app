@@ -8,7 +8,7 @@ export async function login(username: string, password: string) {
   // Simple authentication - in a real app, you would check against a database
   if (username === "admin" && password === "password") {
     // Create a JWT token
-    const token = await createToken({ username })
+    const token = await createToken({ usernamme })
 
     // Set the token in a cookie
     cookies().set("auth-token", token, {

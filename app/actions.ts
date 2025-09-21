@@ -1,5 +1,5 @@
 "use server"
-
+.
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import { createToken, verifyToken } from "@/lib/auth"
@@ -36,7 +36,7 @@ export async function logout() {
 }
 
 export async function testAuthorization() {
-  // Get the toen from cookies
+  // Get the token from cookies
   const token = cookies().get("auth-token")?.value
 
   // If there's no token, return unauthorized

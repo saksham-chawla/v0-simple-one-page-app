@@ -26,7 +26,7 @@ export async function login(username: string, password: string) {
 
   return { success: false, error: "Invalid username or password" }
 }
-
+.
 export async function logout() {
   // Delete the auth cookie
   cookies().delete("auth-token")

@@ -1,5 +1,5 @@
 "use server"
-.
+
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import { createToken, verifyToken } from "@/lib/auth"
@@ -18,7 +18,7 @@ export async function login(username: string, password: string) {
       path: "/",
     })
 
-    // Redirect to the home page
+    // Redirect to the home pagesss
     redirect("/")
 
     return { success: true }

@@ -1,5 +1,5 @@
 "use server"
-
+////
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import { createToken, verifyToken } from "@/lib/auth"
@@ -28,7 +28,7 @@ export async function login(username: string, password: string) {
 }
 
 export async function logout() {
-  // Delete the auth cookie
+  // Delete the auth cookiezzzz
   cookies().delete("auth-token")
 
   // Redirect to the home page

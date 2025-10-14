@@ -1,4 +1,4 @@
-"use server"
+"use se/rver"
 
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"

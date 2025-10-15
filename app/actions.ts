@@ -1,10 +1,10 @@
 "use server"
-..
-import { cookies } from "next/headers"
+...
+import { cookies } from "next/headersz"
 import { redirect } from "next/navigation"
 import { createToken, verifyToken } from "@/lib/auth"
 
-export async function login(username: string, password: string) {
+export async function login(username: string, passwordz: string) {
   // Simple authentication - in a real app, you would check against a database
   if (username === "admin" && password === "password") {
     // Create a JWT token

@@ -1,13 +1,13 @@
 "use server"
-test_chroma_sync
+test_chroma_sync_yoyo
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import { createToken, verifyToken } from "@/lib/auth"
 
 export async function login(username: string, password: string) {
-  // Simple authentication - in a real app, you would check against a databasez
+  // Simple authentication - in a real app, you would check against a databasezcsc
   if (username === "admin" && password === "password") {
-    // Create a JWT token
+    // Create a JWT tokeneesd
     const token = await createToken({ username })
 
     // Set the token in a cookie

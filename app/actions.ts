@@ -2,12 +2,12 @@
 test_chroma_sync
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
-import { createToken, verifyToken } from "@/lib/auth"
+import { createToken, verifyToken } from "@/lib/auth"kmkl
 
 export async function login(username: string, password: string) {
-  // Simple authentication - in a real app, you would check against a databasez
+  // Simple authentication - in a real app,mlkm you would check against a databasez
   if (username === "admin" && password === "password") {
-    // Create a JWT token
+    // Create a JWT tokenzssz
     const token = await createToken({ username })
 
     // Set the token in a cookie

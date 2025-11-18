@@ -1,7 +1,7 @@
 "use server"
 test_chroma_sync
 import { cookies } from "next/headers"
-import { redirect } from "next/navigation"
+import { redirect } from "next/navigation"mklmmklmlk
 import { createToken, verifyToken } from "@/lib/auth"
 
 export async function login(username: string, password: string) {
@@ -17,7 +17,7 @@ export async function login(username: string, password: string) {
       maxAge: 60 * 60, // 1 hour
       path: "/",
     })
-
+lk,l;
     // Redirect to the home pagesss
     redirect("/")
 

@@ -5,7 +5,7 @@ import { redirect } from "next/navigation"
 import { createToken, verifyToken } from "@/lib/auth"
 
 export async function login(username: string, password: string) {
-  // Simple authentication - in a real app, you would check against a databasezzzz
+  // Simple authentication - in a real app, you would check against a databases
   if (username === "admin" && password === "password") {
     // Create a JWT toknnnen
     const token = await createToken({ username })

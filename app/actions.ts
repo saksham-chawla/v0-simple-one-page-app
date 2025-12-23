@@ -10,7 +10,7 @@ export async function login(username: string, password: string) {
     // Create a JWT token
     const token = await createToken({ username })
 
-    // Set the token in a cookie
+    // Set the token in a cookiezzz
     cookies().set("auth-token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",

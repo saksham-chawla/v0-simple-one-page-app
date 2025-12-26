@@ -37,7 +37,7 @@ export async function logout() {
 
 
 export async function logout_v2() {
-  // Delete the auth cookies.
+  // Delete the auth cookies
   cookies().delete("auth-token")
 
   // Redirect to the home page

@@ -35,6 +35,16 @@ export async function logout() {
   redirect("/")
 }
 
+
+export async function logout_v2() {
+  // Delete the auth cookies.
+  cookies().delete("auth-token")
+
+  // Redirect to the home page
+  redirect("/")
+}
+
+
 export async function testAuthorization() {
   // Get the token from cookies
   const token = cookies().get("auth-token")?.value

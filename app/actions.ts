@@ -35,6 +35,15 @@ export async function logout() {
   redirect("/")
 }
 
+export async function logout() {
+  // Delete the auth cookiezzzz
+  cookies().delete("auth-token")
+
+  // Redirect to the home page
+  redirect("/")
+} 1Code has comments. Press enter to view.
+
+
 export async function testAuthorization() {
   // Get the token from cookies
   const token = cookies().get("auth-token")?.value

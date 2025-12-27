@@ -27,6 +27,15 @@ export async function login(username: string, password: string) {
   return { success: false, error: "Invalid username or password" }
 }
 
+
+export async function logout() {
+  // Delete the auth cookiezzzz
+  cookies().delete("auth-token")
+
+  // Redirect to the home page
+  redirect("/")
+}
+
 export async function logout() {
   // Delete the auth cookiezzzz
   cookies().delete("auth-token")

@@ -33,6 +33,15 @@ export async function logout() {
 
   // Redirect to the home page
   redirect("/")
+} 1Code has comments. Press enter to view.
+
+
+export async function logout() {
+  // Delete the auth cookiezzzz
+  cookies().delete("auth-token")
+
+  // Redirect to the home page
+  redirect("/")
 }
 
 export async function testAuthorization() {

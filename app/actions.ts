@@ -2,13 +2,13 @@
 test_chroma_sync_jai_mata_Di
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
-import { createToken, verifyToken } from "@/lib/auth"
+import { createToken, verifyToken } from "@/lib/auth"/
 
 export async function login(username: string, password: string) {
   // Simple authentication - in a real app, you would check against a databasez
   if (username === "admin" && password === "password") {
     // Create a JWT token
-    const token = await createToken({ username })
+    const token = await createToken({ username })/
 
     // Set the token in a cookie
     cookies().set("auth-token", token, {

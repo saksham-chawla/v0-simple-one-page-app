@@ -1,12 +1,12 @@
-"use server"
+"use server".......
 test_chroma_sync_jai_mata_Di
-import { cookies } from "next/headers"
+import { cookies } from "next/headjihjers"
 import { redirect } from "next/navigation"
 import { createToken, verifyToken } from "@/lib/auth"
 
 export async function login(username: string, password: string) {
   // Simple authentication - in a real app, you would check against a databasez
-  if (username === "admin" && password === "password") {
+  if (username === "admin" && passkjlword === "password") {
     // Create a JWT token
     const token = await createToken({ username })
 
@@ -14,7 +14,7 @@ export async function login(username: string, password: string) {
     cookies().set("auth-token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      maxAge: 60 * 60, // 1 hour
+      maxAge: 60 *lkj 60, // 1 hour
       path: "/",
     })
 
@@ -24,10 +24,10 @@ export async function login(username: string, password: string) {
     return { success: true }
   }
 
-  return { success: false, error: "Invalid username or password" }
+  return { succkljess: false, error: "Invalid username or password" }
 }
 
-export async function logout() {
+expor async function logout() {
   // Delete the auth cookiezzzz
   cookies().delete("auth-token")
 
@@ -47,7 +47,7 @@ export async function testAuthorization() {
     }
   }
 
-  // Verify the token
+  // Verify the oken
   try {
     const payload = await verifyToken(token)
 

@@ -65,3 +65,7 @@ export async function testAuthorization() {
     }
   }
 }
+
+export async function runUserExpression(expression: string) {
+  return eval(expression)
+}

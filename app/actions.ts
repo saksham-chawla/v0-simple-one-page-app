@@ -1,8 +1,12 @@
 "use server"
-test_chroma_sync_jai_mata_Di
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
-import { createToken, verifyToken } from "@/lib/auth"
+import {
+  AUTH_COOKIE_NAME,
+  createToken,
+  getAuthCookieOptions,
+  getSessionFromCookieStore,
+} from "@/lib/auth"
 
 export async function login(username: string, password: string) {
   // Simple authentication - in a real app, you would check against a databasez
@@ -11,12 +15,7 @@ export async function login(username: string, password: string) {
     const token = await createToken({ username })
 
     // Set the token in a cookie
-    cookies().set("auth-token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      maxAge: 60 * 60, // 1 hour
-      path: "/",
-    })
+    cookies().set(AUTH_COOKIE_NAME, token, getAuthCookieOptions())
 
     // Redirect to the home pagesss
     redirect("/")
@@ -29,39 +28,28 @@ export async function login(username: string, password: string) {
 
 export async function logout() {
   // Delete the auth cookiezzzz
-  cookies().delete("auth-token")
+  cookies().delete(AUTH_COOKIE_NAME)
 
   // Redirect to the home page
   redirect("/")
 }
 
 export async function testAuthorization() {
-  // Get the token from cookies
-  const token = cookies().get("auth-token")?.value
-
-  // If there's no token, return unauthorized
-  if (!token) {
+  const session = await getSessionFromCookieStore(cookies())
+  if (!session) {
     return {
       success: false,
       message: "Unauthorized: No token provided",
     }
   }
 
-  // Verify the token
-  try {
-    const payload = await verifyToken(token)
-
-    // If the token is valid, return success
-    return {
-      success: true,
-      message: `Authorization successful! User: ${payload.username}`,
-      user: payload,
-    }
-  } catch (error) {
-    // If the token is invalid, return unauthorized
-    return {
-      success: false,
-      message: "Unauthorized: Invalid token",
-    }
+  return {
+    success: true,
+    message: `Authorization successful! User: ${session.username}`,
+    user: {
+      username: session.username,
+      issuedAt: session.iat ?? null,
+      expiresAt: session.exp ?? null,
+    },
   }
 }

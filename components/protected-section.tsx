@@ -8,14 +8,27 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CheckCircle2, XCircle, ShieldCheck, LogOut } from "lucide-react"
+import type { AuthSession } from "@/lib/auth"
 
-export default function ProtectedSection() {
+interface ProtectedSectionProps {
+  session: AuthSession
+}
+
+export default function ProtectedSection({ session }: ProtectedSectionProps) {
   const [testResult, setTestResult] = useState<{
     success: boolean
     message: string
     timestamp?: string
+    user?: {
+      username: string
+      issuedAt: number | null
+      expiresAt: number | null
+    }
   } | null>(null)
   const [loading, setLoading] = useState(false)
+  const sessionExpiresAt = session.exp
+    ? new Date(session.exp * 1000).toLocaleString()
+    : "Unknown"
 
   const handleTestAuth = async () => {
     setLoading(true)
@@ -25,8 +38,9 @@ export default function ProtectedSection() {
         success: result.success,
         message: result.message,
         timestamp: new Date().toLocaleTimeString(),
+        user: result.success ? result.user : undefined,
       })
-    } catch (error) {
+    } catch {
       setTestResult({
         success: false,
         message: "Failed to test authorization",
@@ -44,7 +58,10 @@ export default function ProtectedSection() {
           <div className="flex justify-between items-center">
             <div>
               <CardTitle>Protected Section</CardTitle>
-              <CardDescription>This section is only visible to authenticated users</CardDescription>
+              <CardDescription>
+                This section is only visible to authenticated users.
+                Signed in as <span className="font-medium">{session.username}</span>.
+              </CardDescription>
             </div>
             <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
               <CheckCircle2 className="h-3.5 w-3.5 mr-1" />
@@ -75,6 +92,11 @@ export default function ProtectedSection() {
                   {testResult.success ? <CheckCircle2 className="h-4 w-4" /> : <XCircle className="h-4 w-4" />}
                   <AlertDescription className="flex flex-col">
                     <span>{testResult.message}</span>
+                    {testResult.user && (
+                      <span className="text-xs text-muted-foreground mt-1">
+                        Verified session for {testResult.user.username}
+                      </span>
+                    )}
                     <span className="text-xs text-muted-foreground mt-1">{testResult.timestamp}</span>
                   </AlertDescription>
                 </Alert>
@@ -92,7 +114,10 @@ export default function ProtectedSection() {
                       Token Location: <span className="font-semibold">HTTP Cookie (auth-token)</span>
                     </div>
                     <div>
-                      Expiration: <span className="font-semibold">1 hour</span>
+                      Session User: <span className="font-semibold">{session.username}</span>
+                    </div>
+                    <div>
+                      Expires At: <span className="font-semibold">{sessionExpiresAt}</span>
                     </div>
                     <div>
                       Signed with: <span className="font-semibold">HS256</span>

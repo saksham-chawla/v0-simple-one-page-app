@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CheckCircle2, XCircle, ShieldCheck, LogOut } from "lucide-react"
 import type { AuthSession } from "@/lib/auth"
+import { buildSessionSnapshot, formatSessionExpiry } from "@/services/auth-session"
 
 interface ProtectedSectionProps {
   session: AuthSession
@@ -26,9 +27,8 @@ export default function ProtectedSection({ session }: ProtectedSectionProps) {
     }
   } | null>(null)
   const [loading, setLoading] = useState(false)
-  const sessionExpiresAt = session.exp
-    ? new Date(session.exp * 1000).toLocaleString()
-    : "Unknown"
+  const sessionSnapshot = buildSessionSnapshot(session)
+  const sessionExpiresAt = formatSessionExpiry(sessionSnapshot.expiresAt)
 
   const handleTestAuth = async () => {
     setLoading(true)
@@ -114,7 +114,7 @@ export default function ProtectedSection({ session }: ProtectedSectionProps) {
                       Token Location: <span className="font-semibold">HTTP Cookie (auth-token)</span>
                     </div>
                     <div>
-                      Session User: <span className="font-semibold">{session.username}</span>
+                      Session User: <span className="font-semibold">{sessionSnapshot.username}</span>
                     </div>
                     <div>
                       Expires At: <span className="font-semibold">{sessionExpiresAt}</span>

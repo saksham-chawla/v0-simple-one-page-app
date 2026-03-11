@@ -1,10 +1,10 @@
 import { cookies } from "next/headers"
 import PublicSection from "@/components/public-section"
 import ProtectedSection from "@/components/protected-section"
-import { getSessionFromCookieStore } from "@/lib/auth"
+import { resolveSessionFromCookies } from "@/services/auth-session"
 
 export default async function Home() {
-  const session = await getSessionFromCookieStore(cookies())
+  const session = await resolveSessionFromCookies(cookies())
 
   return (
     <main className="min-h-screen p-6 md:p-12 max-w-4xl mx-auto">

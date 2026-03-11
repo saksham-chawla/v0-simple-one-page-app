@@ -5,8 +5,8 @@ import {
   AUTH_COOKIE_NAME,
   createToken,
   getAuthCookieOptions,
-  getSessionFromCookieStore,
 } from "@/lib/auth"
+import { buildAuthorizationResult } from "@/services/auth-session"
 
 export async function login(username: string, password: string) {
   // Simple authentication - in a real app, you would check against a databasez
@@ -35,21 +35,5 @@ export async function logout() {
 }
 
 export async function testAuthorization() {
-  const session = await getSessionFromCookieStore(cookies())
-  if (!session) {
-    return {
-      success: false,
-      message: "Unauthorized: No token provided",
-    }
-  }
-
-  return {
-    success: true,
-    message: `Authorization successful! User: ${session.username}`,
-    user: {
-      username: session.username,
-      issuedAt: session.iat ?? null,
-      expiresAt: session.exp ?? null,
-    },
-  }
+  return buildAuthorizationResult(cookies())
 }

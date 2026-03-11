@@ -5,7 +5,7 @@ const JWT_SECRET = new TextEncoder().encode("your-secret-key-at-least-32-chars-l
 
 export const AUTH_COOKIE_NAME = "auth-token"
 
-type CookieStoreLike = {
+export type CookieStoreLike = {
   get(name: string): { value: string } | undefined
 }
 

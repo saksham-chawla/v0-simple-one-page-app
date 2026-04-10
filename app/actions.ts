@@ -1,11 +1,11 @@
 "use server"
-test_chroma_sync_jai_mata_Di
+
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import { createToken, verifyToken } from "@/lib/auth"
 
 export async function login(username: string, password: string) {
-  // Simple authentication - in a real app, you would check against a databasez
+  // Simple authentication - in a real app, you would check against a database
   if (username === "admin" && password === "password") {
     // Create a JWT token
     const token = await createToken({ username })
@@ -18,7 +18,7 @@ export async function login(username: string, password: string) {
       path: "/",
     })
 
-    // Redirect to the home pagesss
+    // Redirect to the home page
     redirect("/")
 
     return { success: true }
@@ -28,7 +28,7 @@ export async function login(username: string, password: string) {
 }
 
 export async function logout() {
-  // Delete the auth cookiezzzz
+  // Delete the auth cookie
   cookies().delete("auth-token")
 
   // Redirect to the home page
